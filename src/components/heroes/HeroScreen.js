@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react'
 import { Redirect, useParams } from 'react-router'
 import { getHeroesById } from '../../selectors/getHeroById';
+import { heroImages } from '../../helpers/heroImages';
+// import batman from '../../assets/heroes/dc-batman.jpg'; // estatico
 
 export const HeroScreen = ({ history }) => {
 
@@ -32,7 +34,10 @@ export const HeroScreen = ({ history }) => {
     <div className='row mt-5'>
       <div className='col-4'>
         <img
-          src={`../assets/heroes/${heroeId}.jpg`}
+          // src={`../assets/heroes/${heroeId}.jpg`} // desde public assets
+          // src={batman} // importado directo desde react
+          // src={heroImages(`./${heroeId}.jpg`)} // Dinamico desde react
+          src={heroImages(`./${heroeId}.jpg`).default} // Dinamico desde react
           alt={superhero}
           className='img-thumbnail animate__animated animate__backInLeft'
         />
@@ -55,7 +60,7 @@ export const HeroScreen = ({ history }) => {
           onClick={handleReturn}
         >
           Return
-          </button>
+        </button>
 
       </div>
     </div>
